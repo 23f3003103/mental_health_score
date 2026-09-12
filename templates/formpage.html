@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - MindScore</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <div class="brand">
+                <div class="brand-logo">
+                    <i class="bi bi-brain"></i>
+                </div>
+                <span>MindScore</span>
+            </div>
+
+                        <nav class="sidebar-nav">
+                <a href="/" class="nav-link">
+                    <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="/assessment" class="nav-link active">
+                    <i class="bi bi-clipboard2"></i>
+                    <span>Your Information</span>
+                </a>
+
+                <a href="/result" class="nav-link">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <span>Results</span>
+                </a>
+
+                <a href="/suggestions" class="nav-link">
+                    <i class="bi bi-lightbulb"></i>
+                    <span>Suggestions</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="secure-card">
+                <i class="bi bi-shield"></i>
+                <div>
+                    <h6>Secure &amp; Private</h6>
+                    <p>We value your privacy. Your information is safe with us.</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOP PRIVACY -->
+        <div class="top-privacy">
+            <i class="bi bi-shield"></i>
+            <div>
+                <strong>Your privacy is important</strong>
+                <span>All data is secure and confidential</span>
+            </div>
+        </div>
+
+        <section class="content-card">
+
+            <!-- STEPPER -->
+            <div class="stepper">
+                <div class="step-item current">
+                    <div class="step-circle">1</div>
+                    <span>Your Information</span>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step-item">
+                    <div class="step-circle">2</div>
+                    <span>Analyze</span>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step-item">
+                    <div class="step-circle">3</div>
+                    <span>Results</span>
+                </div>
+            </div>
+
+            <!-- TITLE -->
+            <div class="form-heading">
+                <div class="heading-icon">
+                    <i class="bi bi-clipboard2"></i>
+                </div>
+                <div>
+                    <h1>Tell us about yourself</h1>
+                    <p>Please provide accurate information for better predictions.</p>
+                </div>
+            </div>
+
+            <div class="heading-divider"></div>
+
+           <!-- INFORMATION FORM -->
+            <form id="mindScoreForm">
+
+                <div class="form-grid">
+
+                    <!-- NAME - USER TYPES -->
+                    <div class="field">
+                        <label for="name">Your Name</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-person-circle field-icon"></i>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" maxlength="60" required>
+                        </div>
+                    </div>
+                    <!-- AGE - USER TYPES -->
+                    <div class="field">
+                        <label for="age">Age</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-calendar3 field-icon"></i>
+                            <input type="number" id="age" name="age" min="10" max="100" placeholder="Enter your age" required>
+                            <span class="input-unit">years</span>
+                        </div>
+                    </div>
+                    <!-- GENDER - USER SELECTS -->
+                    <div class="field">
+                        <label for="gender">Gender</label>
+                        <div class="select-wrap">
+                            <i class="bi bi-person field-icon"></i>
+                            <select id="gender" name="gender" required>
+                                <option value="" selected disabled>Select your gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <i class="bi bi-chevron-down chevron"></i>
+                        </div>
+                    </div>
+                    <!-- COUNTRY - USER SELECTS -->
+                    <div class="field">
+                        <label for="country">Country</label>
+                        <div class="select-wrap">
+                            <i class="bi bi-globe2 field-icon"></i>
+                            <select id="country" name="country" required>
+                                <option value="" selected disabled>Select your country</option>
+                                <option value="India">India</option>
+                                <option value="USA">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Mexico">Mexico</option>
+                                <option value="Turkey">Turkey</option>
+                                <option value="France">France</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <i class="bi bi-chevron-down chevron"></i>
+                        </div>
+                    </div>
+                    <!-- ACADEMIC LEVEL - USER SELECTS -->
+                    <div class="field">
+                        <label for="academic_level">Academic Level</label>
+                        <div class="select-wrap">
+                            <i class="bi bi-mortarboard field-icon"></i>
+                            <select id="academic_level" name="academic_level" required>
+                                <option value="" selected disabled>Select your academic level</option>
+                                <option value="High School">High School</option>
+                                <option value="Undergraduate">Undergraduate</option>
+                                <option value="Graduate">Postgraduate / Graduate</option>
+                            </select>
+                            <i class="bi bi-chevron-down chevron"></i>
+                        </div>
+                    </div>
+                    <!-- MOST USED PLATFORM - USER SELECTS -->
+                    <div class="field">
+                        <label for="platform">Most Used Platform</label>
+                        <div class="select-wrap">
+                            <i class="bi bi-phone field-icon"></i>
+                            <select id="platform" name="platform" required>
+                                <option value="" selected disabled>Select platform</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Twitter">Twitter / X</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Snapchat">Snapchat</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="WeChat">WeChat</option>
+                                <option value="LINE">LINE</option>
+                                <option value="KakaoTalk">KakaoTalk</option>
+                                <option value="VKontakte">VKontakte</option>
+                            </select>
+                            <i class="bi bi-chevron-down chevron"></i>
+                        </div>
+                    </div>
+                    <!-- PURPOSE - USER SELECTS -->
+                    <div class="field">
+                        <label for="purpose">Purpose Of Use</label>
+                        <div class="select-wrap">
+                            <i class="bi bi-record-circle field-icon"></i>
+                            <select id="purpose" name="purpose" required>
+                                <option value="" selected disabled>Select purpose</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Education">Education</option>
+                                <option value="Networking">Social Interaction / Networking</option>
+                                <option value="News">News</option>
+                            </select>
+                            <i class="bi bi-chevron-down chevron"></i>
+                        </div>
+                    </div>
+                    <!-- STRESS LEVEL - USER SELECTS -->
+                    <div class="field">
+                        <label for="stress_level">Stress Level</label>
+                        <div class="select-wrap">
+                            <i class="bi bi-activity field-icon"></i>
+                            <select id="stress_level" name="stress_level" required>
+                                <option value="" selected disabled>Select your stress level</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Very High">Very High</option>
+                            </select>
+                            <i class="bi bi-chevron-down chevron"></i>
+                        </div>
+                    </div>
+                    <!-- DAILY USAGE - USER TYPES -->
+                    <div class="field">
+                        <label for="usage">Avg Daily Usage Hours</label>
+
+                        <div class="input-wrap">
+                            <i class="bi bi-clock field-icon"></i>
+                            <input type="number" id="usage" name="usage" min="0" max="24" step="0.1" placeholder="Enter hours" required>
+                            <span class="input-unit">hours</span>
+                        </div>
+                    </div>
+                    <!-- DAILY UNLOCKS - USER TYPES -->
+                    <div class="field">
+                        <label for="unlocks">Daily Unlocks</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-unlock field-icon"></i>
+                            <input type="number" id="unlocks" name="unlocks" min="0" placeholder="Enter number of unlocks" required>
+                        </div>
+                    </div>
+                    <!-- STUDY HOURS - USER TYPES -->
+                    <div class="field">
+                        <label for="study_hours">Study Hours</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-book field-icon"></i>
+                            <input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" placeholder="Enter study hours" required>
+                            <span class="input-unit">hours</span>
+                        </div>
+                    </div>
+                    <!-- PHYSICAL ACTIVITY - USER TYPES -->
+                    <div class="field">
+                        <label for="activity_hours">Physical Activity Hours</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-person-walking field-icon"></i>
+                            <input type="number" id="activity_hours" name="activity_hours" min="0" max="24" step="0.1" placeholder="Enter activity hours" required>
+                            <span class="input-unit">hours</span>
+                        </div>
+                    </div>
+                    <!-- SLEEP - USER TYPES -->
+                    <div class="field">
+                        <label for="sleep_hours">Sleep Hours Per Night</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-moon field-icon"></i>
+                            <input type="number" id="sleep_hours" name="sleep_hours" min="0" max="24" step="0.1" placeholder="Enter sleep hours" required>
+                            <span class="input-unit">hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="formError" class="form-error" style="display:none;"></div>
+
+                <!-- CONTINUE -->
+                <button type="submit" class="continue-btn" id="continueBtn">
+                    <span>Continue</span>
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </form>
+        </section>
+        <div class="bottom-note">
+            <i class="bi bi-lock"></i>
+            <span>Your data is secure and confidential.</span>
+        </div>
+    </main>
+</div>
+
+<script src="/static/form.js"></script>
+</body>
+</html>
