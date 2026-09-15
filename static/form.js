@@ -38,8 +38,6 @@ document.getElementById('mindScoreForm').addEventListener('submit', async functi
             throw new Error(data.error || 'Something went wrong. Please try again.');
         }
 
-        // Stash the result (and the answers, for the suggestions page) so
-        // the next pages can render them dynamically.
         sessionStorage.setItem('mindscore_result', JSON.stringify(data));
         sessionStorage.setItem('mindscore_inputs', JSON.stringify(payload));
 

@@ -16,69 +16,47 @@ const TONE_COLORS = {
     fortune: { number: '#7c3aed', gaugeStart: '#7c3aed', gaugeEnd: '#ec4899' },
 };
 
-// Cycling icons / bg colours for the three joke suggestions
 const FORTUNE_ICONS = ['bi-emoji-laughing', 'bi-stars', 'bi-balloon-heart'];
 const FORTUNE_BGS   = ['purple-bg', 'blue-bg', 'green-bg'];
 
 (function () {
     const raw = sessionStorage.getItem('mindscore_result');
     if (!raw) {
-        // No result in this session yet - send them back to the form.
         window.location.href = '/assessment';
         return;
     }
 
     const data = JSON.parse(raw);
-
-    // ------------------------------------------------------------------
-    // TEASED MODE: fortune/joke response for the special names
-    // ------------------------------------------------------------------
     if (data.teased) {
-        // ============================================================
-        //  🎵 EASTER EGG SONG — paste your song URL on the line below
-        // ============================================================
-        var easterEggSongUrl = 'static/images/Galti Se Mistake.mp3';
-        // ============================================================
-        if (easterEggSongUrl !== '') {
-            var audio = new Audio(easterEggSongUrl);
-            audio.loop = false;
-            audio.volume = 0.6;
-            audio.currentTime = 15;
-            audio.play().catch(function () {
-                // Autoplay blocked by browser — silently ignore.
-            });
-        }
-
         // Update page heading
         document.getElementById('resultHeading').textContent =
             '\uD83D\uDD2E A Message For You, ' + data.name + '!';
 
-        // Replace the score number with a sparkle emoji so nothing reads as
-        // a real (potentially alarming) numeric score
+       
         const scoreEl = document.getElementById('scoreNumber');
         scoreEl.textContent = '\u2728';
         scoreEl.style.fontSize = '2.8rem';
         scoreEl.style.lineHeight = '1';
         scoreEl.style.color = '#7c3aed';
 
-        // Hide the "/10.0" denominator and the SVG gauge arc
+       
         document.querySelector('.score-denom').style.display = 'none';
         document.querySelector('.score-gauge').style.opacity = '0.15';
         document.querySelector('.score-gauge').style.pointerEvents = 'none';
 
-        // Category + message
+        
         document.getElementById('scoreCategory').textContent = '\uD83C\uDF00 Fortune Result';
         document.getElementById('scoreMessage').innerHTML = data.message;
 
-        // Hide the keep-it-up pill and the four metric tiles
+       
         document.getElementById('keepPill').style.display = 'none';
         document.querySelector('.metric-grid').style.display = 'none';
 
-        // Relabel the suggestion panel header
+        
         document.querySelector('.suggestion-panel h3').textContent =
             '\uD83C\uDF89 The Stars Suggest\u2026';
 
-        // Render the three joke suggestions with fun icons
+        
         const grid = document.getElementById('suggestionGrid');
         grid.innerHTML = '';
         (data.suggestions || []).forEach(function (s, i) {
@@ -92,12 +70,10 @@ const FORTUNE_BGS   = ['purple-bg', 'blue-bg', 'green-bg'];
             grid.appendChild(el);
         });
 
-        return; // done — don't touch any of the normal-mode elements
+        return;
     }
 
-    // ------------------------------------------------------------------
-    // NORMAL MODE
-    // ------------------------------------------------------------------
+    
     document.getElementById('scoreNumber').textContent = data.score.toFixed(1);
     document.getElementById('scoreCategory').textContent = data.category;
     document.getElementById('scoreMessage').innerHTML = data.message;
@@ -109,7 +85,7 @@ const FORTUNE_BGS   = ['purple-bg', 'blue-bg', 'green-bg'];
     );
     document.getElementById('confidenceMetric').textContent = data.confidence + '%';
 
-    // Gauge arc: semicircle radius 85 -> total length pi*85 ~= 267.
+    
     const ARC_LENGTH = Math.PI * 85;
     const filled = (data.score / 10) * ARC_LENGTH;
     document.getElementById('gaugeValuePath').style.strokeDasharray =

@@ -9,7 +9,7 @@ const FOCUS_META = {
     social:   { icon: 'bi-chat-heart',      cls: 'sleep',    label: 'Social Wellbeing' },
 };
 
-// Maps each key to icon, colour class, and text-colour class for recommendation cards
+
 const CARD_META = {
     sleep:    { icon: 'bi-moon',           color: 'blue',   textClass: '' },
     stress:   { icon: 'bi-person-heart',   color: 'purple', textClass: '' },
@@ -22,7 +22,7 @@ const CARD_META = {
     fortune:  { icon: 'bi-stars',          color: 'purple', textClass: '' },
 };
 
-// Cycling icons / colours for fortune cards
+
 const FORTUNE_CARD_ICONS   = ['bi-emoji-laughing', 'bi-stars', 'bi-balloon-heart'];
 const FORTUNE_CARD_COLORS  = ['purple', 'blue', 'green'];
 
@@ -35,21 +35,17 @@ const FORTUNE_CARD_COLORS  = ['purple', 'blue', 'green'];
     const data = JSON.parse(raw);
     const suggestions = data.suggestions || [];
 
-    // ------------------------------------------------------------------
-    // TEASED MODE: fortune/joke response for the special names
-    // ------------------------------------------------------------------
     if (data.teased) {
-        // Update the subtitle greeting
+   
         document.getElementById('suggGreeting').textContent =
             'The stars have spoken, ' + data.name + '! \uD83C\uDF1F';
 
-        // Update the page heading icon label
+
         document.querySelector('.page-heading h1').textContent = '\uD83D\uDD2E Fortune Edition';
 
-        // Hide the normal score summary card entirely — no fake score shown
+
         document.querySelector('.summary-card').style.display = 'none';
 
-        // Insert a fortune-message banner above "Recommended for You"
         const sectionTitle = document.querySelector('.section-title');
         const banner = document.createElement('div');
         banner.className = 'bottom-message';
@@ -59,10 +55,8 @@ const FORTUNE_CARD_COLORS  = ['purple', 'blue', 'green'];
             '<span style="color:#3d0099; font-weight:500;">' + data.message + '</span>';
         sectionTitle.parentNode.insertBefore(banner, sectionTitle);
 
-        // Relabel the section title
         sectionTitle.textContent = '\uD83C\uDF89 Fortune Suggestions';
 
-        // Render the three joke suggestion cards with fun icons
         const grid = document.getElementById('recommendGrid');
         grid.innerHTML = '';
         suggestions.forEach(function (s, i) {
@@ -81,25 +75,18 @@ const FORTUNE_CARD_COLORS  = ['purple', 'blue', 'green'];
             grid.appendChild(article);
         });
 
-        // Hide the Helpful Resources section (not meaningful in fortune mode)
         const resourcesTitle = document.querySelector('.resources-title');
         const resourceGrid   = document.querySelector('.resource-grid');
         if (resourcesTitle) resourcesTitle.style.display = 'none';
         if (resourceGrid)   resourceGrid.style.display   = 'none';
 
-        // Lighten the bottom message
         document.querySelector('.bottom-message:last-of-type').innerHTML =
             '<i class="bi bi-stars"></i>' +
             '<span>You asked the oracle and the oracle delivered. Have an amazing day! \uD83C\uDF08</span>';
 
-        return; // done
+        return; 
     }
 
-    // ------------------------------------------------------------------
-    // NORMAL MODE
-    // ------------------------------------------------------------------
-
-    // --- Greeting ---
     if (data.name) {
         document.getElementById('suggGreeting').textContent =
             'Hi ' + data.name + '! Here are steps tailored just for you.';
@@ -109,7 +96,6 @@ const FORTUNE_CARD_COLORS  = ['purple', 'blue', 'green'];
     document.getElementById('suggCategoryPill').textContent = data.category;
     document.getElementById('suggQuote').innerHTML = data.message;
 
-    // Focus areas: show whichever habits actually triggered a suggestion.
     const keys = suggestions.map(function (s) { return s.key; });
     const focusContainer = document.getElementById('focusItems');
     focusContainer.innerHTML = '';
@@ -124,7 +110,6 @@ const FORTUNE_CARD_COLORS  = ['purple', 'blue', 'green'];
         focusContainer.appendChild(el);
     });
 
-    // Build recommendation cards dynamically from the API suggestions.
     const grid = document.getElementById('recommendGrid');
     grid.innerHTML = '';
     suggestions.forEach(function (s) {
